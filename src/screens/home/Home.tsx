@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../../components/Container'
 import { Colors, Images } from '../../res'
 import EventsMealsBar from './EventsMealsBar'
@@ -9,6 +9,7 @@ import TableSlider from './TableSlider'
 import BottomBar from './BottomBar'
 import { Cards } from '../cards';
 import { mealsData, eventsData } from './Data'
+import { getAsyncData, postAsyncData } from '../../utils/fetch'
 
 const Home = (props: any) => {
     const [tableBtnPressed, setTableBtnPressed] = useState(false)
@@ -29,6 +30,25 @@ const Home = (props: any) => {
     ])
     const [events, setEvents] = useState(eventsData)
     const [meals, setMeals] = useState(mealsData)
+
+    useEffect(() => {
+        const getMoviesFromApiAsync = async () => {
+            try {
+                // console.log("[=====TG Fetch2 Start======]")
+                const response = await fetch('http://192.168.103.42/url.php', {
+                    method: 'GET',
+                });
+                // console.log("[=====TG Fetch2 Response======]", response)
+                const json = await response.json();
+                // console.log("[=====TG Fetch2 Json======]", json)
+                setMeals(json)
+                // console.log("[=====TG Fetch2 Json======]", JSON.stringify(json))
+            } catch (error) {
+                console.log("[=====TG Fetch2 ERR======]", error)
+            }
+        };
+        getMoviesFromApiAsync();
+    }, [])
 
 
     const onTableBtnPress = () => {
