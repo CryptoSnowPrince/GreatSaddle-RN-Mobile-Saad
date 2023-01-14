@@ -14,7 +14,7 @@ const EventDetails = (props: any) => {
             "https://goosebumps.finance/images/easter-battle.png",
             "https://goosebumps.finance/images/easter-battle.png",
         ],
-        name: '1The Speed of Now (Live Performance)',
+        name: '2The Speed of NowNow (Live Performance)',
         description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.',
         price: 'Free',
         discount: '500',
