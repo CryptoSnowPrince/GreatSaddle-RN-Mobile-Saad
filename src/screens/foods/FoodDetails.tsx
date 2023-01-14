@@ -8,8 +8,8 @@ import Entypo from 'react-native-vector-icons/Entypo'
 
 const FoodDetails = (props: any) => {
     const [food, setFood] = useState<any>({
-        image: "https://source.unsplash.com/1024x768/?nature",
-        name: 'Roast Dinner',
+        image: "https://pancakeswap.finance/images/hero.png",
+        name: 'Roast Roast Dinner',
         price: '1,250',
         discount: '2,500',
         available: true,

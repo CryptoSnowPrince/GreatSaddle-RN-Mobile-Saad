@@ -11,8 +11,6 @@ const Meals = (props: any) => {
         navigation = {}
     } = props
 
-
-
     const onFoodItemPress = () => navigation.navigate('FoodDetails')
 
     const renderCategoryItems = ({ item, index }: any) => {
