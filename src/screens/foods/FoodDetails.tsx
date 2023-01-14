@@ -13,7 +13,7 @@ const FoodDetails = (props: any) => {
         price: '1,250',
         discount: '2,500',
         available: true,
-        ingredients: "Honey Beans, Palm Oil, Green Pepper, Onions leaves, Dried Shrimp, Curry Powder, Seasoning, Potato Chips.",
+        ingredients: "kkk Honey Beans, Palm Oil, Green Pepper, Onions leaves, Dried Shrimp, Curry Powder, Seasoning, Potato Chips.",
         possibleAllergen: 'Curry Power',
         mealNo: '0142',
         uploadedBy: 'Susan',
