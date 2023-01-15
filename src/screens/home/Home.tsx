@@ -8,8 +8,10 @@ import MyTableBtn from './MyTableBtn'
 import TableSlider from './TableSlider'
 import BottomBar from './BottomBar'
 import { Cards } from '../cards';
+import { API_PATH } from '../../config'
 import { mealsData, eventsData } from './Data'
-import { getAsyncData, postAsyncData } from '../../utils/fetch'
+// import { getAsyncData, postAsyncData } from '../../utils/fetch'
+// import mock from './Mock.json';
 
 const Home = (props: any) => {
     const [tableBtnPressed, setTableBtnPressed] = useState(false)
@@ -29,25 +31,22 @@ const Home = (props: any) => {
         }
     ])
     const [events, setEvents] = useState(eventsData)
-    const [meals, setMeals] = useState(mealsData)
+    const [meals, setMeals] = useState([])
 
     useEffect(() => {
-        const getMoviesFromApiAsync = async () => {
+        const fetchData = async () => {
             try {
-                // console.log("[=====TG Fetch2 Start======]")
-                const response = await fetch('http://192.168.103.42/url.php', {
+                const response = await fetch(`${API_PATH}?meals=-1`, {
                     method: 'GET',
                 });
-                // console.log("[=====TG Fetch2 Response======]", response)
                 const json = await response.json();
-                // console.log("[=====TG Fetch2 Json======]", json)
+                // console.log("[=====mealsData Json======]", json)
                 setMeals(json)
-                // console.log("[=====TG Fetch2 Json======]", JSON.stringify(json))
             } catch (error) {
-                console.log("[=====TG Fetch2 ERR======]", error)
+                console.log("[=====Fetch mealsData ERR======]", error)
             }
         };
-        getMoviesFromApiAsync();
+        fetchData();
     }, [])
 
 

@@ -64,3 +64,4 @@ buck-out/
 /vendor/bundle/
 check.log
 src/utils/fetch.js
+src/screens/home/Mock.json
