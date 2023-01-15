@@ -30,16 +30,16 @@ const FoodDetails = (props: any) => {
                     method: 'GET',
                 });
                 const json = await response.json();
-                // console.log("[=====TG FoodDetails Json======]", json)
-                // console.log("[=====TG Fetch2 Stringify======]", JSON.stringify(json))
+                // console.log("[=====FoodDetails Json======]", json)
+                // console.log("[=====Fetch2 Stringify======]", JSON.stringify(json))
                 setFood(json)
             } catch (error) {
-                console.log("[=====TG FoodDetails ERR======]", error)
+                console.log("[=====FoodDetails ERR======]", error)
             }
         };
         fetchData();
-        // console.log("[=====TG FoodDetails props.route.params stringify======]", JSON.stringify(props.route.params))
-        // console.log("[=====TG FoodDetails props.route.params foodId======]", props.route.params.foodId)
+        // console.log("[=====FoodDetails props.route.params stringify======]", JSON.stringify(props.route.params))
+        // console.log("[=====FoodDetails props.route.params foodId======]", props.route.params.foodId)
     }, [])
 
     const onBackPress = () => props.navigation.goBack()
