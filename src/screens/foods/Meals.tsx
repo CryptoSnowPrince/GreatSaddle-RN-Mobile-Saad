@@ -31,7 +31,7 @@ const Meals = (props: any) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const mealsResponse = await fetch(`${API_PATH, REFETCH}?meals=-1`, {
+                const mealsResponse = await fetch(`${API_PATH}?meals=-1`, {
                     method: 'GET',
                 });
                 const mealsJson = await mealsResponse.json();

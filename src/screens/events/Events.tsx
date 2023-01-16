@@ -29,7 +29,7 @@ const Events = (props: any) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const eventsResponse = await fetch(`${API_PATH, REFETCH}?events=-1`, {
+                const eventsResponse = await fetch(`${API_PATH}?events=-1`, {
                     method: 'GET',
                 });
                 const eventsJson = await eventsResponse.json();

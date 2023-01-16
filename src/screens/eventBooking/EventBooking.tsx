@@ -38,7 +38,7 @@ const EventBooking = (props: any) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${API_PATH, REFETCH}?eventbooking=${props.route.params.eventbookingId}`, {
+                const response = await fetch(`${API_PATH}?eventbooking=${props.route.params.eventbookingId}`, {
                     method: 'GET',
                 });
                 const json = await response.json();

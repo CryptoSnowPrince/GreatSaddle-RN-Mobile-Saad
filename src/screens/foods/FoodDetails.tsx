@@ -40,7 +40,7 @@ const FoodDetails = (props: any) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${API_PATH, REFETCH}?meals=${props.route.params.foodId}`, {
+                const response = await fetch(`${API_PATH}?meals=${props.route.params.foodId}`, {
                     method: 'GET',
                 });
                 const json = await response.json();
