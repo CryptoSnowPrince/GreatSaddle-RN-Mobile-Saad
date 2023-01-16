@@ -5,10 +5,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import { Constants, hp, Typography, wp } from '../../global';
 import { ProgressCirlce } from '../../components'
 import Entypo from 'react-native-vector-icons/Entypo'
-import { API_PATH } from '../../config';
+import { API_PATH, REFETCH } from '../../config';
 
 const FoodDetails = (props: any) => {
     const [food, setFood] = useState<any>({
+        id: "",
         image: " ",
         name: ' ',
         price: '0',
@@ -28,7 +29,7 @@ const FoodDetails = (props: any) => {
             setRefetch((prevRefetch) => {
                 return !prevRefetch;
             });
-        }, 120000);
+        }, REFETCH);
 
         return () => {
             clearInterval(timerID);
@@ -39,7 +40,7 @@ const FoodDetails = (props: any) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${API_PATH}?meals=${props.route.params.foodId}`, {
+                const response = await fetch(`${API_PATH, REFETCH}?meals=${props.route.params.foodId}`, {
                     method: 'GET',
                 });
                 const json = await response.json();

@@ -2,7 +2,7 @@ import { View, StyleSheet, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { wp } from '../../global'
 import EventCard from './EventCard'
-import { API_PATH } from '../../config'
+import { API_PATH, REFETCH } from '../../config'
 
 const Events = (props: any) => {
     const {
@@ -18,7 +18,7 @@ const Events = (props: any) => {
             setRefetch((prevRefetch) => {
                 return !prevRefetch;
             });
-        }, 30000);
+        }, REFETCH);
 
         return () => {
             clearInterval(timerID);
@@ -29,15 +29,15 @@ const Events = (props: any) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const eventsResponse = await fetch(`${API_PATH}?events=-1`, {
+                const eventsResponse = await fetch(`${API_PATH, REFETCH}?events=-1`, {
                     method: 'GET',
                 });
                 const eventsJson = await eventsResponse.json();
-                console.log("[=====eventsJson======]", eventsJson)
-                console.log("[=====eventsJson Stringify======]", JSON.stringify(eventsJson))
+                // console.log("[=====Events Json======]", eventsJson)
+                // console.log("[=====Events Json Stringify======]", JSON.stringify(eventsJson))
                 setEvents(eventsJson)
             } catch (error) {
-                console.log("[=====Fetch mealsJson && eventsJson ERR======]", error)
+                console.log("[=====Fetch Events ERR======]", error)
             }
         };
         fetchData();

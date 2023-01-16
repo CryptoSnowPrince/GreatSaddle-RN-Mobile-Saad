@@ -8,7 +8,7 @@ import MyTableBtn from './MyTableBtn'
 import TableSlider from './TableSlider'
 import BottomBar from './BottomBar'
 import { Cards } from '../cards';
-// import { API_PATH } from '../../config'
+// import { API_PATH, REFETCH } from '../../config'
 // import { mealsData, eventsData } from './Data'
 // import { getAsyncData, postAsyncData } from '../../utils/fetch'
 

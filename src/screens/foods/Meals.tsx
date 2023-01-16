@@ -4,7 +4,7 @@ import { Colors, Fonts, } from '../../res'
 import { hp, Typography, wp } from '../../global'
 import { Constants } from '../../global'
 import Entypo from 'react-native-vector-icons/Entypo'
-import { API_PATH } from '../../config'
+import { API_PATH, REFETCH } from '../../config'
 
 const Meals = (props: any) => {
     const {
@@ -20,7 +20,7 @@ const Meals = (props: any) => {
             setRefetch((prevRefetch) => {
                 return !prevRefetch;
             });
-        }, 30000);
+        }, REFETCH);
 
         return () => {
             clearInterval(timerID);
@@ -31,14 +31,14 @@ const Meals = (props: any) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const mealsResponse = await fetch(`${API_PATH}?meals=-1`, {
+                const mealsResponse = await fetch(`${API_PATH, REFETCH}?meals=-1`, {
                     method: 'GET',
                 });
                 const mealsJson = await mealsResponse.json();
-                // console.log("[=====mealsJson======]", mealsJson)
+                // console.log("[=====Meals Json======]", mealsJson)
                 setMeals(mealsJson)
             } catch (error) {
-                console.log("[=====Fetch mealsJson && eventsJson ERR======]", error)
+                console.log("[=====Fetch Meals ERR======]", error)
             }
         };
         fetchData();

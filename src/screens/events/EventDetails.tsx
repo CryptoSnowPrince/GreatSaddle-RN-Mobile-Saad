@@ -5,10 +5,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import { Images } from '../../res'
 import { SliderBox } from "react-native-image-slider-box";
 import { Constants, hp, Typography, wp } from '../../global';
-import { API_PATH } from '../../config';
+import { API_PATH, REFETCH } from '../../config';
 
 const EventDetails = (props: any) => {
     const [event, setEvent] = useState({
+        id: "",
         images: [],
         name: ' ',
         description: ' ',
@@ -47,7 +48,7 @@ const EventDetails = (props: any) => {
             setRefetch((prevRefetch) => {
                 return !prevRefetch;
             });
-        }, 120000);
+        }, REFETCH);
 
         return () => {
             clearInterval(timerID);
@@ -58,7 +59,7 @@ const EventDetails = (props: any) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${API_PATH}?events=${props.route.params.eventId}`, {
+                const response = await fetch(`${API_PATH, REFETCH}?events=${props.route.params.eventId}`, {
                     method: 'GET',
                 });
                 const json = await response.json();
@@ -77,7 +78,7 @@ const EventDetails = (props: any) => {
 
     const onBackPress = () => props.navigation.goBack()
     const onSaveForLaterPress = () => props.navigation.navigate('SavedEvents')
-    const onBookNowPress = () => props.navigation.navigate('EventBooking')
+    const onBookNowPress = (eventbookingId: any) => props.navigation.navigate('EventBooking', {eventbookingId:eventbookingId})
 
     const RenderFieldList = (props: any) => {
         const { icon, heading, description, first, presenters } = props
@@ -303,7 +304,7 @@ const EventDetails = (props: any) => {
                 </TouchableOpacity>
                 <TouchableOpacity style={Styles.bookNowBtn}
                     activeOpacity={Constants.btnActiveOpacity}
-                    onPress={onBookNowPress}
+                    onPress={onBookNowPress.bind(null, event.id)}
                 >
                     <Image
                         source={Images.calenderWhite}
