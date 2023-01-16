@@ -9,29 +9,42 @@ import { API_PATH } from '../../config';
 
 const FoodDetails = (props: any) => {
     const [food, setFood] = useState<any>({
-        // image: "https://pancakeswap.finance/images/hero.png",
-        // name: 'Roast Roast Dinner',
-        // price: '1,250',
-        // discount: '2,500',
-        // available: true,
-        // ingredients: "kkk Honey Beans, Palm Oil, Green Pepper, Onions leaves, Dried Shrimp, Curry Powder, Seasoning, Potato Chips.",
-        // possibleAllergen: 'Curry Power',
-        // mealNo: '0142',
-        // uploadedBy: 'Susan',
-        // location: 'Wambi Restaurant',
+        image: " ",
+        name: ' ',
+        price: '0',
+        discount: '0',
+        available: false,
+        ingredients: " ",
+        possibleAllergen: ' ',
+        mealNo: ' ',
+        uploadedBy: ' ',
+        location: ' ',
     })
     const [cartItems, setCartItems] = useState('')
+    const [refetch, setRefetch] = useState(true);
+
+    useEffect(() => {
+        const timerID = setInterval(() => {
+            setRefetch((prevRefetch) => {
+                return !prevRefetch;
+            });
+        }, 120000);
+
+        return () => {
+            clearInterval(timerID);
+        };
+
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(`${API_PATH}?meals=${props.route.params.foodId}`, {
-                    // const response = await fetch(`${API_PATH}?meals=${props.route.params.id}`, {
                     method: 'GET',
                 });
                 const json = await response.json();
                 // console.log("[=====FoodDetails Json======]", json)
-                // console.log("[=====Fetch2 Stringify======]", JSON.stringify(json))
+                // console.log("[=====FoodDetailsf Stringify======]", JSON.stringify(json))
                 setFood(json)
             } catch (error) {
                 console.log("[=====FoodDetails ERR======]", error)
@@ -40,7 +53,7 @@ const FoodDetails = (props: any) => {
         fetchData();
         // console.log("[=====FoodDetails props.route.params stringify======]", JSON.stringify(props.route.params))
         // console.log("[=====FoodDetails props.route.params foodId======]", props.route.params.foodId)
-    }, [])
+    }, [refetch])
 
     const onBackPress = () => props.navigation.goBack()
 
